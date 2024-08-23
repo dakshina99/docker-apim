@@ -115,6 +115,9 @@ RUN \
     && cp -r ${WSO2_SERVER_HOME}/repository/deployment/server/executionplans ${USER_HOME}/wso2-tmp \
     && rm -f ${WSO2_SERVER}.zip
 
+# copy the database driver to the server
+ADD --chown=wso2carbon:wso2 https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.3/postgresql-42.7.3.jar ${WSO2_SERVER_HOME}/repository/components/lib
+
 # remove unnecesary packages
 RUN apt-get purge -y netcat-openbsd unzip wget
 
